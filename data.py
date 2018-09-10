@@ -34,8 +34,8 @@ class dataProcess(object):
         labels_datagen = ImageDataGenerator(**datagen_args)
 
         # Load training images and labels from the respective directories
-        image_generator = image_datagen.flow_from_directory('/home/' + self.username + '/endothelial-cell-seg/data/EC/train/image/', color_mode='grayscale', class_mode=None, seed=1, batch_size=8)
-        labels_generator = labels_datagen.flow_from_directory('/home/' + self.username + '/endothelial-cell-seg/data/EC/train/label/', color_mode='grayscale', class_mode=None, seed=1, batch_size=8)
+        image_generator = image_datagen.flow_from_directory('/home/' + self.username + '/endothelial-cell-seg/data/EC/train/image/', color_mode='grayscale', class_mode=None, seed=1, batch_size=8, target_size=(sample_img.shape[0], sample_img.shape[1]))
+        labels_generator = labels_datagen.flow_from_directory('/home/' + self.username + '/endothelial-cell-seg/data/EC/train/label/', color_mode='grayscale', class_mode=None, seed=1, batch_size=8, target_size=(sample_img.shape[0], sample_img.shape[1]))
 
         # Find all test images from the data folder
         self.test_imgs_list = glob.glob('/home/' + self.username + '/endothelial-cell-seg/data/EC/test/*.bmp')
